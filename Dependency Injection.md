@@ -35,7 +35,7 @@ Dependency Injection (DI) також грає важливу роль в кон�
 
 ```python
 from fastapi import FastAPI, Depends
-
+from .services import UserService
 app = FastAPI()
 
 # Залежність, яка використовується в кількох місцях
@@ -48,6 +48,7 @@ def get_db_connection():
 @app.get("/items/")
 async def read_items(db: str = Depends(get_db_connection)):
     # Використовуємо db (залежність) у функції обробників
+    service = UserService(database=db)
     return {"db_connection": db}
 
 # Ще один шлях, який також використовує залежність

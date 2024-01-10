@@ -116,12 +116,12 @@ class Order(BaseModel):
 
 ```python
 from pydantic import BaseModel
-from typing import Union
+from typing import Union, Optional
 
 class Event(BaseModel):
     event_type: str
-    event_data: Union[Order, User]
-
+    event_data: Union[Order, User] #  Order | User
+	some_optional_data: Optional[str] # str | None , Union[str, None]
 ```
 
 ## Наслідування Моделей
